@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public int hp;
+
     public bool pursuitOn;
     public EnemySight eS;
 
@@ -28,55 +30,30 @@ public class Enemy : MonoBehaviour
     public float pursuitTimer;
     public float pursuitOnTime;
 
-    public bool isRanged;
     public GameObject bulletPrefab;
-    public float onTimeToShoot;
-    public float shootTimer;
 
+    void Start()
+    {
+        eS = GetComponent<EnemySight>();
+    }
 
     void Update()
     {
-        eS = GetComponent<EnemySight>();
-
-        if (eS._targetInSight /*|| eS._targetInListen*/)
+        if (eS._targetInSight)
         {
             pursuitOn = true;
         }
 
         if (pursuitOn)
         {
-            //alarm.SetActive(true);
             followWaypoint = false;
 
             _dirToGo = eS.target.transform.position - transform.position;
 
-            transform.forward = Vector3.Lerp(transform.forward, _dirToGo, rotationSpeed * Time.deltaTime);
+            transform.forward = Vector3.Lerp(transform.forward, new Vector3(_dirToGo.x, 0, _dirToGo.z), rotationSpeed * Time.deltaTime);
 
             transform.position += transform.forward * speed * Time.deltaTime;
-
-            // eS.target.GetComponent<Player>().hp = 0;
-            if (isRanged)
-            {
-                shootTimer += Time.deltaTime;
-                if (shootTimer > onTimeToShoot)
-                {
-                    Shoot();
-                    shootTimer = 0;
-                }
-            }
         }
-
-        /*if (eS.target.GetComponent<Player>().death == true)
-        {
-            pursuitTimer += Time.deltaTime;
-            if (pursuitTimer > pursuitOnTime)
-            {
-                pursuitTimer = 0;
-                pursuitOn = false;
-                followWaypoint = true;
-                alarm.SetActive(false);
-            }
-        }*/
 
         if (followWaypoint)
         {
@@ -118,12 +95,28 @@ public class Enemy : MonoBehaviour
             transform.position += transform.forward * speed * Time.deltaTime;
             Debug.Log(i);
         }
+
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    void Shoot()
+    public void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab);
         bullet.transform.position = transform.position;
+        bullet.transform.position += Vector3.up * 1.3f;
         bullet.transform.forward = transform.forward;
+        bullet.transform.Rotate(new Vector3(0, 90, 0));
+        bullet.GetComponent<Bullet>().shooter = gameObject;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "PlayerHit")
+        {
+            hp--;
+        }
     }
 }

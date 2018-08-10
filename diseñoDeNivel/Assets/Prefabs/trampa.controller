@@ -46,14 +46,14 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &1102323510211947950
+--- !u!1102 &1102860974409865644
 AnimatorState:
   serializedVersion: 5
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: trampacerradas
-  m_Speed: 1
+  m_Name: trampaCerrar
+  m_Speed: -1
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -65,32 +65,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 26ab9d9ecd9d3dc438fc0561e0d745e9, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &1102512953617651786
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: trampaAbierta
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7cfd6a6f795e57340a8fdd49bcae7ca4, type: 2}
+  m_Motion: {fileID: 7400000, guid: 61498b18bb4190842b1d957942e476e7, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -131,16 +106,13 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102987686774888746}
-    m_Position: {x: 200, y: 0, z: 0}
+    m_Position: {x: 336, y: 24, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102300410681119918}
-    m_Position: {x: 235, y: 65, z: 0}
+    m_Position: {x: 336, y: 84, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102323510211947950}
-    m_Position: {x: 270, y: 130, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102512953617651786}
-    m_Position: {x: 305, y: 195, z: 0}
+    m_State: {fileID: 1102860974409865644}
+    m_Position: {x: 336, y: 144, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
